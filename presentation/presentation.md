@@ -24,7 +24,7 @@ McGovern Institute for Brain Research, MIT (Cambridge, MA)
 ## Why?
 
 - because most tutorials shows you how to write code that works
-- in real life you spend more time dealing with bugs than  writting a new code...
+- in real life you spend more time dealing with bugs than  writing a new code...
 
 
 ---
@@ -113,34 +113,43 @@ AssertionError
 
 ---
 # Python Traceback 
-TODO
+
 
 ```
 Traceback (most recent call last):
-  File "/Users/dorota/teaching/pycon_debugging/part1/division_traceback.py", line 18, in <module>
-    main()
-  File "/Users/dorota/teaching/pycon_debugging/part1/division_traceback.py", line 15, in main
-    return mean(my_list)
-  File "/Users/dorota/teaching/pycon_debugging/part1/division_traceback.py", line 8, in mean
-    list_mean = list_sum / list_len
+  File "/Users/dorota/teaching/pycon_debug/part2/standard_deviation.py", line 41, in <module>
+    main(filename)
+  File "/Users/dorota/teaching/pycon_debug/part2/standard_deviation.py", line 35, in main
+    std = standard_deviation_list(data)
+  File "/Users/dorota/teaching/pycon_debug/part2/standard_deviation.py", line 24, in standard_deviation_list
+    mean = mean_value_list(data_list)
+  File "/Users/dorota/teaching/pycon_debug/part2/standard_deviation.py", line 6, in mean_value_list
+    return sum(data_list) / len(data_list)
 ZeroDivisionError: division by zero
+
 ```
 - show a Python call stack at the point the exception was raised 
 
 ---
-TODO
+
 # Python call stack
 
 ![width:800px](stack.001.jpeg)
  
  ---
+
+
+
+
+
+
 # pdb - the Python debugger
 
 -  interactive source code debugger
 
 - part of the Python's standard library
 
-- allows to stop and exammin running code
+- allows to stop and exammine running code
 
 - two main ways of using `pdb`:
 
@@ -162,7 +171,7 @@ after inoking the debugger using `breakpoint()` in the code:
 
 - `q` - quit the debugger
 
-- `c(ontinue)` - continue execution untill the next breakpoint
+- `c(ontinue)` - continue execution until the next breakpoint
 
 
 ---
@@ -172,12 +181,13 @@ after inoking the debugger using `breakpoint()` in the code:
 
 - `s(tep)` - execute the current line, steps inside a called function
 
-- `c(ontinue)` - continue execution untill the next breakpoint
+- `c(ontinue)` - continue execution until the next breakpoint
 
 - `b <line number, name of function>` - adding new breakpoint
 
 - `<enter>` - repeating the last command
 - `<upper arrow>` - search the commands history
+
 
 
 ---
@@ -225,7 +235,7 @@ Check full description of `up` / `down` and more commands [here](https://docs.py
 
     - can be installed with `pip`: `pip install pdbpp`
 
-- ### dcheck debugging option in your favourite IDE
+- ### check debugging option in your favorite IDE
 
 ---
 # How to avoid bugs?
@@ -238,7 +248,7 @@ Check full description of `up` / `down` and more commands [here](https://docs.py
 
 - test your code with various versions of python and libraries
 
-- use `try / except` in your code to handle possible errors
+- use [`try / except`](https://docs.python.org/3/tutorial/errors.html) in your code to handle possible errors
 
 - try to write clean code and follow Python convention (PEP8), use `pycodestyle`, `black`, etc., to check and fix your style
 
@@ -255,3 +265,10 @@ Check full description of `up` / `down` and more commands [here](https://docs.py
 - debugging can take a lot of time - take breaks, but make notes
 
 - try to add tests that cover the issue next time
+
+---
+# Additional Resources
+
+- [RealPython: Python debugging with PDB](https://realpython.com/python-debugging-pdb/#essential-pdb-commands)
+
+- [Adventures in Python Debugging](https://pythondebugging.com/)
