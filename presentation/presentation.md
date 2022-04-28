@@ -1,13 +1,14 @@
 ---
 marp: true
 theme: gaia
-paginate: false
+paginate: true
 backgroundColor: '#eae8db'
 color: '#392020'
 ---
 <!-- _class: lead -->
 
-# LEARNING FROM ERRORS: UNDERSTANDING AND DEBUGGING PYTHON ERRORS
+# Learning from Errors: 
+# Understanding and Debugging Python Errors
 
 
 ### Dorota Jarecka
@@ -24,6 +25,31 @@ McGovern Institute for Brain Research, MIT (Cambridge, MA)
 
 - because most tutorials shows you how to write code that works
 - in real life you spend more time dealing with bugs than  writting a new code...
+
+
+---
+# Outline
+
+- ### Python Errors
+
+- ### Traceback
+
+- ### Python debugger
+
+- ### Avoiding bugs and discussion
+
+---
+# Format
+
+- ### Presentation
+
+- ### Live Coding
+
+- ### Hands-on Exercises / Pair Coding
+
+- ### Discussion
+
+### Feel free to interrupt me at any time!!
 
 
 ---
@@ -127,8 +153,105 @@ TODO
 # using the interactive debugger
 
 after inoking the debugger using `breakpoint()` in the code:
-- `p <expression>` - evaluate the expression in the current context and print its value
-- `pp` - the same as `p` but uses pretty-print 
-- `l` - ist source code for the current file (without arguments, list 11 lines around the current line)
-- `ll` - ist all source code for the current function or frame
-- `a` - print the argument list of the current function.
+
+```
+> /Users/dorota/teaching/pycon_debug/part2/standard_deviation.py(24)std_dev()
+-> mean = sum(data_list) / N
+(Pdb) 
+```
+
+- `q` - quit the debugger
+
+- `c(ontinue)` - continue execution untill the next breakpoint
+
+
+---
+# pdb commands: continue and step
+
+- `n(ext)` - continue execution until the next line in the current function
+
+- `s(tep)` - execute the current line, steps inside a called function
+
+- `c(ontinue)` - continue execution untill the next breakpoint
+
+- `b <line number, name of function>` - adding new breakpoint
+
+- `<enter>` - repeating the last command
+- `<upper arrow>` - search the commands history
+
+
+---
+# pdb commands: check the stack trace
+
+- `w(here)` - print a stack trace, with the most recent frame at the bottom
+
+- `u(p)` - move the current frame one level up
+
+- `d(own)` - move the current frame one level down
+
+Check full description of `up` / `down` and more commands [here](https://docs.python.org/3.10/library/pdb.html) 
+
+
+---
+# pdb: variables listing
+
+- `locals()` - display all the local variables
+
+- `globals()` - display all the global variables
+
+- `display var` (pdb command) - track the changes of variable var
+
+---
+# pdb: additional checks
+
+- Python functions
+    - `dir()`, `dir(obj)`
+    - `type(obj)`
+
+- [`inspect` module](https://docs.python.org/3/library/inspect.html)
+    - provides functions to get information about live objects such as modules, classes, functions, tracebacks, etc.
+    - `inspect.getdoc` - getting the documentation
+    - `inspect.signature` - checking function signature
+
+
+---
+# Can pdb be even better?
+
+- ### pdb++
+    - a drop-in replacement for pdb
+    - adds new features to make debugging experience nicer
+        - syntax highlighting of code
+        - TAB completion of Python expressions
+
+    - can be installed with `pip`: `pip install pdbpp`
+
+- ### dcheck debugging option in your favourite IDE
+
+---
+# How to avoid bugs?
+
+- don't change too many things at the same time
+
+- use Version Control System (e.g. Git) to track your changes
+
+- write good test suits and use Continuous Integration
+
+- test your code with various versions of python and libraries
+
+- use `try / except` in your code to handle possible errors
+
+- try to write clean code and follow Python convention (PEP8), use `pycodestyle`, `black`, etc., to check and fix your style
+
+---
+# Final thoughts on debugging
+
+- try to understand the root of your problems
+    - e.g. perhaps the directory that is passed to your function should never be empty? perhaps you have some connection issues?
+
+- don't change unrelated things when debugging
+
+- you should combine debugging with reading the code 
+
+- debugging can take a lot of time - take breaks, but make notes
+
+- try to add tests that cover the issue next time
