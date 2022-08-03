@@ -5,10 +5,13 @@ https://en.wikipedia.org/wiki/Standard_deviation#Corrected_sample_standard_devia
 
 import sys
 import json
-
+# Test
 
 def mean_value_list(data_list):
-    return sum(data_list) / len(data_list)
+    if len(data_list) > 0:
+        return sum(data_list) / len(data_list)
+    else:
+        print(f"List has a size of 0")
 
 
 def mean_dev_sq_list(data_list, mean):
@@ -21,7 +24,10 @@ def mean_dev_sq_list(data_list, mean):
 
 def std_dev_sqr_unb(mean_dev_sum, N):
     """unbiased sample standard deviation"""
-    return 1 / (N - 1) * mean_dev_sum
+    if N > 1:
+        return 1 / (N - 1) * mean_dev_sum
+    else:
+        return 0
 
 
 def standard_deviation_list(data_list):
